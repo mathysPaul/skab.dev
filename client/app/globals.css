@@ -2,63 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
+    /* ---- Portfolio design tokens (source: Claude Design "Portfolio minimaliste") ---- */
+    /* Brand */
+    --brand: #6d6af5;
+    --brand-soft: #edecfe;
+    --success: #3fbf8f;
+    /* Text */
+    --ink: #2b2d3c; /* headings / strong text */
+    --body: #5a5e72; /* body copy */
+    --muted-ink: #6b7088; /* small labels — darkened from design #8a8fa6 to meet WCAG AA on white */
+    /* Surfaces */
+    --line: #ececf4; /* hairline borders */
+    --surface-soft: #fafafe; /* subtle card fill */
+    /* Page background gradient (lavender) */
+    --app-bg: linear-gradient(165deg, #dfe3fb 0%, #ecedfb 52%, #f5f0fb 100%);
+    --card-radius: 26px;
+
+    /* ---- shadcn tokens, re-skinned to the portfolio palette (light-only) ---- */
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 233 16% 20%; /* ink */
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 233 16% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --popover-foreground: 233 16% 20%;
+    --primary: 241 87% 69%; /* brand */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 30% 97%;
+    --secondary-foreground: 233 16% 20%;
+    --muted: 240 30% 97%;
+    --muted-foreground: 230 12% 48%; /* muted-ink */
+    --accent: 245 86% 96%; /* brand-soft */
+    --accent-foreground: 241 60% 55%;
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 27% 94%; /* line */
+    --input: 240 27% 94%;
+    --ring: 241 87% 69%; /* brand */
+    --radius: 0.875rem;
   }
 }
 
@@ -67,6 +49,13 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+  ::selection {
+    background: #d9d8fe;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }

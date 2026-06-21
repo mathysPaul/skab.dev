@@ -9,7 +9,22 @@ export default {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+  			display: ['var(--font-display)', 'cursive']
+  		},
   		colors: {
+  			brand: {
+  				DEFAULT: 'var(--brand)',
+  				soft: 'var(--brand-soft)'
+  			},
+  			ink: 'var(--ink)',
+  			body: 'var(--body)',
+  			'muted-ink': 'var(--muted-ink)',
+  			line: 'var(--line)',
+  			'surface-soft': 'var(--surface-soft)',
+  			success: 'var(--success)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -54,7 +69,11 @@ export default {
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			sm: 'calc(var(--radius) - 4px)',
+  			card: 'var(--card-radius)'
+  		},
+  		backgroundImage: {
+  			'app-gradient': 'var(--app-bg)'
   		}
   	}
   },
