@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Space_Mono, Caveat } from "next/font/google";
 import "./globals.css";
+import { SiteShell } from "@/components/site-shell";
+import { Nav } from "@/components/nav";
+import { Footer } from "@/components/footer";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -39,7 +42,11 @@ export default function RootLayout({
       <body
         className={`${jakarta.variable} ${spaceMono.variable} ${caveat.variable} antialiased`}
       >
-        {children}
+        <SiteShell>
+          <Nav />
+          {children}
+          <Footer />
+        </SiteShell>
       </body>
     </html>
   );
