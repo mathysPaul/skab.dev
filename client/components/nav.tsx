@@ -81,10 +81,17 @@ function Nav() {
         {open ? <X /> : <Menu />}
       </button>
 
-      {/* Mobile panel */}
+      {/* Mobile panel + dismiss backdrop */}
       {open && (
-        <div className="absolute left-0 right-0 top-[88px] z-20 mx-4 rounded-card border border-line bg-white p-4 shadow-xl lg:hidden">
-          <div className="flex flex-col">
+        <>
+          <button
+            type="button"
+            aria-label="Fermer le menu"
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-10 cursor-default bg-ink/20 backdrop-blur-sm lg:hidden"
+          />
+          <div className="absolute left-0 right-0 top-[88px] z-20 mx-4 origin-top animate-in fade-in slide-in-from-top-2 rounded-card border border-line bg-white p-4 shadow-xl duration-200 lg:hidden">
+            <div className="flex flex-col">
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -105,8 +112,9 @@ function Nav() {
                 <Link href="/contact">CV ↗</Link>
               </Button>
             </div>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   )
