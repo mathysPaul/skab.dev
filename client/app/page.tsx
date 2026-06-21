@@ -1,13 +1,18 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-app-gradient p-6">
-      <div className="text-center">
-        <p className="font-mono text-sm uppercase tracking-[0.2em] text-brand">
-          Portfolio — 2026
-        </p>
-        <h1 className="mt-4 font-display text-5xl font-bold text-ink">Mathys</h1>
-        <p className="mt-2 text-body">Site en cours de construction.</p>
-      </div>
-    </main>
+    <section className="flex min-h-[60vh] flex-col items-center justify-center px-6 py-24 text-center">
+      <p className="font-mono text-sm uppercase tracking-[0.2em] text-brand">
+        Portfolio — 2026
+      </p>
+      <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+        Mathys Paul
+      </h1>
+      <p className="mt-3 text-body">
+        Designer UI/UX &amp; développeur full-stack
+      </p>
+      <p className="mt-6 font-mono text-xs text-muted-ink">
+        Page d&apos;accueil en cours de construction.
+      </p>
+    </section>
   );
 }
