@@ -146,7 +146,10 @@ export default function Home() {
 
       {/* COMPÉTENCES */}
       <section className="px-6 py-16 sm:px-[52px]">
-        <SectionHeading eyebrow="STACK" title="Compétences & outils" className="mb-8" />
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading eyebrow="STACK" title="Compétences & outils" />
+          <ArrowLink href="/competences">Toutes mes compétences</ArrowLink>
+        </div>
         <TechGrid />
       </section>
 
