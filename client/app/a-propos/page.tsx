@@ -1,21 +1,10 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-
-const paragraphs = [
-  "Développeur full-stack et designer, j'aime comprendre un besoin, dessiner l'interface, puis la construire. Cette double casquette me permet de prendre des décisions produit cohérentes — du wireframe jusqu'au code en production.",
-  "Sept expériences en startup, ERP et consulting m'ont appris à livrer vite et proprement, en équipe agile : avec des tests, de la documentation, et le souci constant de l'utilisateur final.",
-  "Je cherche aujourd'hui un poste où mêler conception et développement, sur des produits utiles et bien faits.",
-];
-
-const likes = [
-  "Concevoir des interfaces claires",
-  "Construire le produit jusqu'au déploiement",
-  "Résoudre des problèmes d'architecture",
-  "Travailler en équipe agile",
-];
+import { paragraphs, likes } from "@/lib/data/about";
 
 export default function AProposPage() {
   return (
@@ -67,7 +56,10 @@ export default function AProposPage() {
 
           <div className="mt-8">
             <Button asChild>
-              <Link href="/contact">Me contacter →</Link>
+              <Link href="/contact">
+                Me contacter
+                <ArrowRight />
+              </Link>
             </Button>
           </div>
         </div>
