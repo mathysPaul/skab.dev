@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { ArrowUpRight, Menu, X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -66,7 +66,10 @@ function Nav() {
           Disponible
         </Badge>
         <Button asChild size="sm">
-          <Link href="/contact">CV ↗</Link>
+          <Link href="/contact">
+            CV
+            <ArrowUpRight />
+          </Link>
         </Button>
       </div>
 
@@ -109,7 +112,10 @@ function Nav() {
                 Disponible
               </Badge>
               <Button asChild size="sm">
-                <Link href="/contact">CV ↗</Link>
+                <Link href="/contact">
+                  CV
+                  <ArrowUpRight />
+                </Link>
               </Button>
             </div>
             </div>

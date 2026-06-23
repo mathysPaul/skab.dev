@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ function ArrowLink({ href, children }: { href: string; children: React.ReactNode
       className="group inline-flex items-center gap-2 text-[15px] font-semibold text-brand"
     >
       {children}
-      <span className="transition-transform group-hover:translate-x-1">→</span>
+      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
     </Link>
   );
 }
@@ -42,7 +42,10 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <Button asChild size="lg">
-              <Link href="/contact">Contactez-moi →</Link>
+              <Link href="/contact">
+                Contactez-moi
+                <ArrowRight />
+              </Link>
             </Button>
           </div>
         </div>
@@ -173,7 +176,10 @@ export default function Home() {
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button asChild size="lg">
-              <Link href="/contact">Me contacter →</Link>
+              <Link href="/contact">
+                Me contacter
+                <ArrowRight />
+              </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <a href="mailto:mathyspaul14@gmail.com">Envoyer un email</a>
