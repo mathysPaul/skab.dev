@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 /**
  * Outer lavender gradient + centered floating white card.
@@ -11,7 +11,7 @@ function SiteShell({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </div>
-  )
+  );
 }
 
-export { SiteShell }
+export { SiteShell };

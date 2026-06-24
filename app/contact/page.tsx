@@ -10,8 +10,8 @@ export default function ContactPage() {
       <header className="px-6 pb-3 pt-14 sm:px-[52px]">
         <SectionHeading as="h1" eyebrow="CONTACT" title="Travaillons ensemble." />
         <p className="mt-4 max-w-[520px] text-[17px] leading-relaxed text-body">
-          Disponible pour un poste à partir de maintenant. Envoyez-moi
-          un e-mail pour discuter d&apos;un projet ou d&apos;une opportunité.
+          Disponible pour un poste à partir de maintenant. Envoyez-moi un e-mail pour discuter d&apos;un projet ou
+          d&apos;une opportunité.
         </p>
       </header>
 
@@ -25,20 +25,14 @@ export default function ContactPage() {
               className="flex items-center justify-between rounded-[18px] border border-line bg-surface-soft px-6 py-5 transition-colors hover:border-brand"
             >
               <span>
-                <span className="mb-1 block font-mono text-xs tracking-wide text-muted-ink">
-                  {link.label}
-                </span>
-                <span className="text-lg font-semibold text-ink">
-                  {link.value}
-                </span>
+                <span className="mb-1 block font-mono text-xs tracking-wide text-muted-ink">{link.label}</span>
+                <span className="text-lg font-semibold text-ink">{link.value}</span>
               </span>
               <span
                 aria-hidden
                 className={cn(
                   "flex size-9 shrink-0 items-center justify-center rounded-full",
-                  link.primary
-                    ? "bg-brand text-white"
-                    : "border border-line bg-white text-ink"
+                  link.primary ? "bg-brand text-white" : "border border-line bg-white text-ink",
                 )}
               >
                 <ArrowUpRight className="size-[18px]" />
@@ -55,9 +49,7 @@ export default function ContactPage() {
           </div>
           {meta.map((row) => (
             <div key={row.label} className="mb-5 last:mb-0">
-              <p className="mb-1.5 font-mono text-xs tracking-wide text-muted-ink">
-                {row.label}
-              </p>
+              <p className="mb-1.5 font-mono text-xs tracking-wide text-muted-ink">{row.label}</p>
               <p className="text-base font-semibold text-ink">{row.value}</p>
             </div>
           ))}

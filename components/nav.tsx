@@ -1,48 +1,44 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { ArrowUpRight, Menu, X } from "lucide-react"
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/projets", label: "Projets" },
   { href: "/parcours", label: "Parcours" },
   { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
-]
+];
 
 function Logo() {
   return (
     <Link href="/" className="flex items-baseline gap-2.5">
-      <span className="font-display text-3xl font-bold leading-none text-ink">
-        Mathys
-      </span>
-      <span className="font-mono text-[11px] tracking-wide text-brand">
-        ui/ux × dev
-      </span>
+      <span className="font-display text-3xl font-bold leading-none text-ink">Mathys</span>
+      <span className="font-mono text-[11px] tracking-wide text-brand">ui/ux × dev</span>
     </Link>
-  )
+  );
 }
 
 function Nav() {
-  const pathname = usePathname()
-  const [open, setOpen] = React.useState(false)
+  const pathname = usePathname();
+  const [open, setOpen] = React.useState(false);
 
   // Close the mobile menu whenever the route changes. Adjusting state during
   // render (React's recommended pattern) instead of an effect avoids the
   // cascading render that calling setState inside an effect would trigger.
-  const [prevPathname, setPrevPathname] = React.useState(pathname)
+  const [prevPathname, setPrevPathname] = React.useState(pathname);
   if (pathname !== prevPathname) {
-    setPrevPathname(pathname)
-    setOpen(false)
+    setPrevPathname(pathname);
+    setOpen(false);
   }
 
-  const isActive = (href: string) => pathname === href
+  const isActive = (href: string) => pathname === href;
 
   return (
     <nav className="relative flex h-[88px] items-center justify-between px-6 sm:px-11">
@@ -56,7 +52,7 @@ function Nav() {
             href={link.href}
             className={cn(
               "text-[15px] font-medium transition-colors hover:text-brand",
-              isActive(link.href) ? "font-semibold text-brand" : "text-body"
+              isActive(link.href) ? "font-semibold text-brand" : "text-body",
             )}
           >
             {link.label}
@@ -95,39 +91,39 @@ function Nav() {
             type="button"
             aria-label="Fermer le menu"
             onClick={() => setOpen(false)}
-            className="fixed inset-0 z-10 cursor-default bg-ink/20 backdrop-blur-sm lg:hidden"
+            className="bg-ink/20 fixed inset-0 z-10 cursor-default backdrop-blur-sm lg:hidden"
           />
-          <div className="absolute left-0 right-0 top-[88px] z-20 mx-4 origin-top animate-in fade-in slide-in-from-top-2 rounded-card border border-line bg-white p-4 shadow-xl duration-200 lg:hidden">
+          <div className="absolute left-0 right-0 top-[88px] z-20 mx-4 origin-top rounded-card border border-line bg-white p-4 shadow-xl duration-200 animate-in fade-in slide-in-from-top-2 lg:hidden">
             <div className="flex flex-col">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-brand-soft",
-                  isActive(link.href) ? "text-brand" : "text-ink"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="mt-2 flex items-center justify-between border-t border-line px-3 pt-4">
-              <Badge variant="outline" dot="var(--success)" className="text-body">
-                Disponible
-              </Badge>
-              <Button asChild size="sm">
-                <Link href="/contact">
-                  CV
-                  <ArrowUpRight />
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-brand-soft",
+                    isActive(link.href) ? "text-brand" : "text-ink",
+                  )}
+                >
+                  {link.label}
                 </Link>
-              </Button>
-            </div>
+              ))}
+              <div className="mt-2 flex items-center justify-between border-t border-line px-3 pt-4">
+                <Badge variant="outline" dot="var(--success)" className="text-body">
+                  Disponible
+                </Badge>
+                <Button asChild size="sm">
+                  <Link href="/contact">
+                    CV
+                    <ArrowUpRight />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </>
       )}
     </nav>
-  )
+  );
 }
 
-export { Nav }
+export { Nav };

@@ -19,7 +19,12 @@ export const contactLinks: ContactLink[] = [
     primary: true,
   },
   { label: "LINKEDIN", value: "/in/mathys-paul", href: "#", primary: false },
-  { label: "GITHUB", value: "github.com/mathysPaul", href: "#", primary: false },
+  {
+    label: "GITHUB",
+    value: "github.com/mathysPaul",
+    href: "#",
+    primary: false,
+  },
 ];
 
 export const meta: MetaRow[] = [

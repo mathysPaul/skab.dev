@@ -1,0 +1,13 @@
+{
+  // Project-local overrides (win over user settings for this repo only).
+  // Imports are sorted/cleaned by ESLint (simple-import-sort + unused-imports),
+  // so disable the global TS "organize imports" here to avoid the two fighting.
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.fixAll.eslint": "explicit"
+  }
+}

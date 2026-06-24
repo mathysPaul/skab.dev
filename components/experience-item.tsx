@@ -12,9 +12,7 @@ function ExperienceItem({ exp, last = false }: { exp: Experience; last?: boolean
       <div className="my-2 font-mono text-xs text-muted-ink">
         {exp.period} · {exp.place}
       </div>
-      <p className="mb-3 max-w-[680px] text-[15px] leading-relaxed text-body">
-        {exp.summary}
-      </p>
+      <p className="mb-3 max-w-[680px] text-[15px] leading-relaxed text-body">{exp.summary}</p>
       {exp.tags.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {exp.tags.map((t) => (
