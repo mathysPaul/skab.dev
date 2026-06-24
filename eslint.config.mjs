@@ -1,16 +1,12 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import coreWebVitals from "eslint-config-next/core-web-vitals";
+import typescript from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
+// Flat config (Next.js 16: `next lint` removed, eslint-config-next ships native
+// flat configs). The ignores block replaces what `next lint` handled implicitly.
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  { ignores: [".next/**", "out/**", "build/**", "next-env.d.ts"] },
+  ...coreWebVitals,
+  ...typescript,
 ];
 
 export default eslintConfig;

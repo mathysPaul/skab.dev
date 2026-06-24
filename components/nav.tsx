@@ -33,10 +33,14 @@ function Nav() {
   const pathname = usePathname()
   const [open, setOpen] = React.useState(false)
 
-  // Close the mobile menu whenever the route changes.
-  React.useEffect(() => {
+  // Close the mobile menu whenever the route changes. Adjusting state during
+  // render (React's recommended pattern) instead of an effect avoids the
+  // cascading render that calling setState inside an effect would trigger.
+  const [prevPathname, setPrevPathname] = React.useState(pathname)
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
     setOpen(false)
-  }, [pathname])
+  }
 
   const isActive = (href: string) => pathname === href
 
