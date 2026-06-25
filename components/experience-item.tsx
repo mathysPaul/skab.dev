@@ -5,7 +5,7 @@ import { type Experience } from "@/lib/data/experiences";
 function ExperienceItem({ exp, last = false }: { exp: Experience; last?: boolean }) {
   return (
     <div className={`relative pl-8 ${last ? "" : "border-l-2 border-line pb-9"}`}>
-      <span className="absolute -left-[7px] top-1 size-3.5 rounded-full bg-brand shadow-[0_0_0_4px_#fff,0_0_0_6px_var(--brand-soft)]" />
+      <span className="absolute -left-[7px] top-1 size-3.5 rounded-full bg-brand shadow-[0_0_0_4px_#fff,0_0_0_6px_rgb(var(--brand-soft))]" />
       <div className="text-[17px] font-bold text-ink">
         {exp.role} · <span className="text-brand">{exp.company}</span>
       </div>

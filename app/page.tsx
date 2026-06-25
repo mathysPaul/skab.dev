@@ -58,7 +58,7 @@ export default function Home() {
         <a
           href="#projets"
           aria-label="Aller à la section suivante"
-          className="text-brand/70 absolute bottom-6 left-1/2 z-10 -translate-x-1/2 transition-colors hover:text-brand"
+          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-brand/70 transition-colors hover:text-brand"
         >
           <ChevronDown className="size-7 animate-bounce" />
         </a>
@@ -81,7 +81,7 @@ export default function Home() {
                 <Image src={p.image} alt={p.name} fill className="object-cover" />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-soft to-[#e3e6fb]">
-                  <span className="text-ink/40 font-mono text-xs">Visuel à venir</span>
+                  <span className="font-mono text-xs text-ink/40">Visuel à venir</span>
                 </div>
               )}
               <Badge variant="neutral" className="absolute left-3.5 top-3.5">
@@ -114,7 +114,7 @@ export default function Home() {
             backgroundImage: "repeating-linear-gradient(135deg,#cdd1f0 0 14px,#dadcf4 14px 28px)",
           }}
         >
-          <span className="text-ink/40 font-mono text-xs">photo / illustration</span>
+          <span className="font-mono text-xs text-ink/40">photo / illustration</span>
         </div>
         <div>
           <SectionHeading eyebrow="À PROPOS" title="Les deux bouts de la chaîne" />

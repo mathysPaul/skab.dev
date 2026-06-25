@@ -62,7 +62,7 @@ function Nav() {
 
       {/* Desktop right actions */}
       <div className="hidden items-center gap-4 lg:flex">
-        <Badge variant="outline" dot="var(--success)" className="text-body">
+        <Badge variant="outline" dot="rgb(var(--success))" className="text-body">
           Disponible
         </Badge>
         <Button asChild size="sm">
@@ -91,7 +91,7 @@ function Nav() {
             type="button"
             aria-label="Fermer le menu"
             onClick={() => setOpen(false)}
-            className="bg-ink/20 fixed inset-0 z-10 cursor-default backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-10 cursor-default bg-ink/20 backdrop-blur-sm lg:hidden"
           />
           <div className="absolute left-0 right-0 top-[88px] z-20 mx-4 origin-top rounded-card border border-line bg-white p-4 shadow-xl duration-200 animate-in fade-in slide-in-from-top-2 lg:hidden">
             <div className="flex flex-col">
@@ -108,7 +108,7 @@ function Nav() {
                 </Link>
               ))}
               <div className="mt-2 flex items-center justify-between border-t border-line px-3 pt-4">
-                <Badge variant="outline" dot="var(--success)" className="text-body">
+                <Badge variant="outline" dot="rgb(var(--success))" className="text-body">
                   Disponible
                 </Badge>
                 <Button asChild size="sm">

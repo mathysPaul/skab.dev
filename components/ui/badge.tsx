@@ -22,7 +22,7 @@ const badgeVariants = cva("inline-flex items-center gap-2 rounded-full font-mono
 });
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {
-  /** color of the leading status dot (e.g. var(--success)); omit for no dot */
+  /** color of the leading status dot (e.g. rgb(var(--success))); omit for no dot */
   dot?: string;
 }
 

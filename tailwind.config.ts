@@ -17,15 +17,15 @@ export default {
       },
       colors: {
         brand: {
-          DEFAULT: "var(--brand)",
-          soft: "var(--brand-soft)",
+          DEFAULT: "rgb(var(--brand))",
+          soft: "rgb(var(--brand-soft))",
         },
-        ink: "var(--ink)",
-        body: "var(--body)",
-        "muted-ink": "var(--muted-ink)",
-        line: "var(--line)",
-        "surface-soft": "var(--surface-soft)",
-        success: "var(--success)",
+        ink: "rgb(var(--ink))",
+        body: "rgb(var(--body))",
+        "muted-ink": "rgb(var(--muted-ink))",
+        line: "rgb(var(--line))",
+        "surface-soft": "rgb(var(--surface-soft))",
+        success: "rgb(var(--success))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

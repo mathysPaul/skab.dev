@@ -6,16 +6,17 @@
   :root {
     /* ---- Portfolio design tokens (source: Claude Design "Portfolio minimaliste") ---- */
     /* Brand */
-    --brand: #6d6af5;
-    --brand-soft: #edecfe;
-    --success: #3fbf8f;
+    /* Raw RGB channels (not hex) so Tailwind can apply /opacity modifiers, e.g. text-ink/45 */
+    --brand: 109 106 245; /* #6d6af5 */
+    --brand-soft: 237 236 254; /* #edecfe */
+    --success: 63 191 143; /* #3fbf8f */
     /* Text */
-    --ink: #2b2d3c; /* headings / strong text */
-    --body: #5a5e72; /* body copy */
-    --muted-ink: #6b7088; /* small labels — darkened from design #8a8fa6 to meet WCAG AA on white */
+    --ink: 43 45 60; /* #2b2d3c — headings / strong text */
+    --body: 90 94 114; /* #5a5e72 — body copy */
+    --muted-ink: 107 112 136; /* #6b7088 — small labels, darkened from design #8a8fa6 to meet WCAG AA on white */
     /* Surfaces */
-    --line: #ececf4; /* hairline borders */
-    --surface-soft: #fafafe; /* subtle card fill */
+    --line: 236 236 244; /* #ececf4 — hairline borders */
+    --surface-soft: 250 250 254; /* #fafafe — subtle card fill */
     /* Page background gradient (lavender) */
     --app-bg: linear-gradient(165deg, #dfe3fb 0%, #ecedfb 52%, #f5f0fb 100%);
     --card-radius: 26px;

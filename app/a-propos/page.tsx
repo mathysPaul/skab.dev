@@ -20,7 +20,7 @@ export default function AProposPage() {
             backgroundImage: "repeating-linear-gradient(135deg, #cdd1f0 0 14px, #dadcf4 14px 28px)",
           }}
         >
-          <span className="text-ink/45 font-mono text-xs">photo / illustration</span>
+          <span className="font-mono text-xs text-ink/45">photo / illustration</span>
         </div>
 
         <div>

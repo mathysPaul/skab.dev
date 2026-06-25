@@ -29,7 +29,7 @@ export default function ProjetsPage() {
               {project.image ? (
                 <Image src={project.image} alt={project.name} fill className="object-cover" />
               ) : (
-                <span className="text-ink/40 font-mono text-xs">Visuel à venir</span>
+                <span className="font-mono text-xs text-ink/40">Visuel à venir</span>
               )}
             </div>
             <div>
