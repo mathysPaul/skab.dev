@@ -1,16 +1,26 @@
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { likes, paragraphs } from "@/lib/data/about";
+import { getAbout } from "@/lib/data-access";
+import { type Locale } from "@/lib/i18n/locale";
+import { Link } from "@/lib/i18n/navigation";
 
-export default function AProposPage() {
+export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  // Opt the page into static rendering (next-intl requires this per segment).
+  setRequestLocale(locale);
+
+  const t = await getTranslations("about");
+  const tCommon = await getTranslations("common");
+  const about = await getAbout(locale);
+
   return (
     <>
       <header className="px-6 pb-3 pt-14 sm:px-[52px]">
-        <SectionHeading as="h1" eyebrow="À propos" title="Les deux bouts de la chaîne" />
+        <SectionHeading as="h1" eyebrow={t("eyebrow")} title={t("title")} />
       </header>
 
       <section className="grid items-start gap-12 px-6 pb-14 pt-9 sm:px-[52px] lg:grid-cols-[0.8fr_1.2fr]">
@@ -20,19 +30,19 @@ export default function AProposPage() {
             backgroundImage: "repeating-linear-gradient(135deg, #cdd1f0 0 14px, #dadcf4 14px 28px)",
           }}
         >
-          <span className="font-mono text-xs text-ink/45">photo / illustration</span>
+          <span className="font-mono text-xs text-ink/45">{tCommon("imagePlaceholder")}</span>
         </div>
 
         <div>
-          {paragraphs.map((p) => (
+          {about.paragraphs.map((p) => (
             <p key={p.slice(0, 24)} className="mb-[18px] text-[17px] leading-loose text-body">
               {p}
             </p>
           ))}
 
-          <div className="mb-3.5 mt-3 font-mono text-xs tracking-[1.5px] text-muted-ink">CE QUE J&apos;AIME FAIRE</div>
+          <div className="mb-3.5 mt-3 font-mono text-xs tracking-[1.5px] text-muted-ink">{t("likesTitle")}</div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {likes.map((item) => (
+            {about.likes.map((item) => (
               <Card key={item} className="px-[18px] py-4 text-[15px] font-semibold text-ink">
                 {item}
               </Card>
@@ -42,7 +52,7 @@ export default function AProposPage() {
           <div className="mt-8">
             <Button asChild>
               <Link href="/contact">
-                Me contacter
+                {t("ctaContact")}
                 <ArrowRight />
               </Link>
             </Button>

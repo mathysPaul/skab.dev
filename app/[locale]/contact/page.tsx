@@ -1,24 +1,30 @@
 import { ArrowUpRight } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { SectionHeading } from "@/components/section-heading";
-import { contactLinks, meta } from "@/lib/data/contact";
+import { getContact } from "@/lib/data-access";
+import { type Locale } from "@/lib/i18n/locale";
 import { cn } from "@/lib/utils";
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  // Opt the page into static rendering (next-intl requires this per segment).
+  setRequestLocale(locale);
+
+  const t = await getTranslations("contact");
+  const contact = await getContact(locale);
+
   return (
     <>
       <header className="px-6 pb-3 pt-14 sm:px-[52px]">
-        <SectionHeading as="h1" eyebrow="CONTACT" title="Travaillons ensemble." />
-        <p className="mt-4 max-w-[520px] text-[17px] leading-relaxed text-body">
-          Disponible pour un poste à partir de maintenant. Envoyez-moi un e-mail pour discuter d&apos;un projet ou
-          d&apos;une opportunité.
-        </p>
+        <SectionHeading as="h1" eyebrow={t("eyebrow")} title={t("title")} />
+        <p className="mt-4 max-w-[520px] text-[17px] leading-relaxed text-body">{t("intro")}</p>
       </header>
 
       <section className="grid gap-8 px-6 pb-16 pt-10 sm:px-[52px] lg:grid-cols-[1.3fr_0.7fr] lg:items-start">
         {/* Contact links */}
         <div className="flex flex-col gap-3.5">
-          {contactLinks.map((link) => (
+          {contact.links.map((link) => (
             <a
               key={link.label}
               href={link.href}
@@ -45,9 +51,9 @@ export default function ContactPage() {
         <div className="rounded-[22px] bg-brand-soft p-7">
           <div className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-ink">
             <span aria-hidden className="size-2.5 rounded-full bg-success" />
-            Disponible — 2026
+            {t("availability")}
           </div>
-          {meta.map((row) => (
+          {contact.meta.map((row) => (
             <div key={row.label} className="mb-5 last:mb-0">
               <p className="mb-1.5 font-mono text-xs tracking-wide text-muted-ink">{row.label}</p>
               <p className="text-base font-semibold text-ink">{row.value}</p>

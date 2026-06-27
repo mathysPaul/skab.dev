@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "projects": "Work",
+    "career": "Experience",
+    "about": "About",
+    "contact": "Contact",
+    "available": "Available",
+    "cv": "Resume",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "metadata": {
+    "title": "Mathys Paul — UI/UX designer & full-stack developer",
+    "description": "Portfolio of Mathys Paul, full-stack developer and UI/UX designer. Seven roles across startups, ERP and consulting."
+  },
+  "footer": {
+    "copyright": "© 2026 Mathys Paul"
+  },
+  "common": {
+    "contactMe": "Get in touch",
+    "learnMore": "Learn more",
+    "viewProject": "View project",
+    "imageComingSoon": "Visual coming soon",
+    "imagePlaceholder": "photo / illustration"
+  },
+  "localeSwitcher": {
+    "label": "Change language",
+    "fr": "FR",
+    "en": "EN",
+    "frFull": "Français",
+    "enFull": "English"
+  },
+  "home": {
+    "eyebrow": "PORTFOLIO — 2026",
+    "tagline": "UI/UX designer & full-stack developer",
+    "ctaContact": "Get in touch",
+    "scrollToNext": "Go to the next section",
+    "projects": {
+      "eyebrow": "WORK",
+      "title": "Current projects",
+      "viewAll": "View all projects"
+    },
+    "about": {
+      "eyebrow": "ABOUT",
+      "title": "Both ends of the chain",
+      "body": "A full-stack developer and designer, I like to understand a need, design the interface, then build it. Seven roles across startups, ERP and consulting taught me to ship fast and clean, within agile teams."
+    },
+    "skills": {
+      "eyebrow": "STACK",
+      "title": "Skills & tools",
+      "viewAll": "View all my skills"
+    },
+    "experience": {
+      "eyebrow": "EXPERIENCE",
+      "title": "Recent experience",
+      "viewAll": "View full experience"
+    },
+    "contact": {
+      "eyebrow": "CONTACT",
+      "title": "Let's work together.",
+      "body": "Open to a role starting in 2026. Reach out to discuss a project or an opportunity.",
+      "ctaContact": "Get in touch",
+      "ctaEmail": "Send an email"
+    }
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Both ends of the chain",
+    "likesTitle": "WHAT I LOVE DOING",
+    "ctaContact": "Get in touch"
+  },
+  "projects": {
+    "eyebrow": "Work",
+    "title": "Current projects",
+    "intro": "The layout is ready for my real projects: visuals, titles and descriptions are still to come.",
+    "viewProject": "View project"
+  },
+  "career": {
+    "eyebrow": "Experience",
+    "title": "Experience",
+    "intro": "Seven roles across startups, ERP and consulting — from the most recent to the earliest."
+  },
+  "skills": {
+    "eyebrow": "STACK",
+    "title": "Skills & tools",
+    "intro": "Languages, frameworks and tools I'm fluent in.",
+    "introHighlight": "Hover over a logo",
+    "introSuffix": "to see the details.",
+    "methodsTitle": "METHODS",
+    "methods": "Agile — Scrum & Kanban · Testing & continuous integration · Technical documentation"
+  },
+  "contact": {
+    "eyebrow": "CONTACT",
+    "title": "Let's work together.",
+    "intro": "Open to a role starting now. Send me an email to discuss a project or an opportunity.",
+    "availability": "Available — 2026"
+  }
+}

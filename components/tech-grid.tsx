@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { stack, type Tech } from "@/lib/data/stack";
+import type { StackCategory, Tech } from "@/lib/data-access/types";
 
 function TechTile({ tech }: { tech: Tech }) {
   const [imgError, setImgError] = React.useState(false);
@@ -41,7 +41,7 @@ function TechTile({ tech }: { tech: Tech }) {
   );
 }
 
-function TechGrid() {
+function TechGrid({ stack }: { stack: StackCategory[] }) {
   return (
     <div className="flex flex-col gap-7">
       {stack.map((group) => (

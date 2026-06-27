@@ -1,14 +1,15 @@
 import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { ExperienceItem } from "@/components/experience-item";
 import { SectionHeading } from "@/components/section-heading";
 import { TechGrid } from "@/components/tech-grid";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { experiences } from "@/lib/data/experiences";
-import { projects } from "@/lib/data/projects";
+import { getExperiences, getProjects, getStack } from "@/lib/data-access";
+import { type Locale } from "@/lib/i18n/locale";
+import { Link } from "@/lib/i18n/navigation";
 
 function ArrowLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -19,7 +20,19 @@ function ArrowLink({ href, children }: { href: string; children: React.ReactNode
   );
 }
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  // Opt the page into static rendering (next-intl requires this per segment).
+  setRequestLocale(locale);
+
+  const t = await getTranslations("home");
+  const tCommon = await getTranslations("common");
+  const [projects, experiences, stack] = await Promise.all([
+    getProjects(locale),
+    getExperiences(locale),
+    getStack(locale),
+  ]);
+
   return (
     <>
       {/* HERO */}
@@ -28,13 +41,13 @@ export default function Home() {
         className="relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#ecedfb] via-[#f2f1fb] to-white px-6 py-16 text-center md:min-h-[calc(100vh-88px)]"
       >
         <div className="relative z-10">
-          <p className="font-mono text-[13px] tracking-[3px] text-brand">PORTFOLIO — 2026</p>
+          <p className="font-mono text-[13px] tracking-[3px] text-brand">{t("eyebrow")}</p>
           <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">Mathys Paul</h1>
-          <p className="mt-3.5 text-lg font-medium text-body">Designer UI/UX &amp; développeur full-stack</p>
+          <p className="mt-3.5 text-lg font-medium text-body">{t("tagline")}</p>
           <div className="mt-8">
             <Button asChild size="lg">
               <Link href="/contact">
-                Contactez-moi
+                {t("ctaContact")}
                 <ArrowRight />
               </Link>
             </Button>
@@ -56,32 +69,32 @@ export default function Home() {
 
         {/* Scroll indicator to next section */}
         <a
-          href="#projets"
-          aria-label="Aller à la section suivante"
+          href="#projects"
+          aria-label={t("scrollToNext")}
           className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-brand/70 transition-colors hover:text-brand"
         >
           <ChevronDown className="size-7 animate-bounce" />
         </a>
       </section>
 
-      {/* PROJETS (preview) */}
-      <section id="projets" className="scroll-mt-6 px-6 py-16 sm:px-[52px]">
+      {/* PROJECTS (preview) */}
+      <section id="projects" className="scroll-mt-6 px-6 py-16 sm:px-[52px]">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading eyebrow="TRAVAUX" title="Projets en cours" />
-          <ArrowLink href="/projets">Tous les projets</ArrowLink>
+          <SectionHeading eyebrow={t("projects.eyebrow")} title={t("projects.title")} />
+          <ArrowLink href="/projects">{t("projects.viewAll")}</ArrowLink>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <Link
               key={p.name}
-              href="/projets"
+              href="/projects"
               className="group relative block aspect-[4/5] overflow-hidden rounded-card shadow-[0_18px_40px_-22px_rgba(78,72,160,0.5)] transition-transform hover:-translate-y-1.5"
             >
               {p.image ? (
                 <Image src={p.image} alt={p.name} fill className="object-cover" />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-soft to-[#e3e6fb]">
-                  <span className="font-mono text-xs text-ink/40">Visuel à venir</span>
+                  <span className="font-mono text-xs text-ink/40">{tCommon("imageComingSoon")}</span>
                 </div>
               )}
               <Badge variant="neutral" className="absolute left-3.5 top-3.5">
@@ -89,9 +102,9 @@ export default function Home() {
               </Badge>
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[#1a183a]/85 via-transparent to-transparent p-5">
                 <div className="mb-3 flex gap-2">
-                  {p.tags.map((t) => (
-                    <span key={t} className="rounded-full bg-white/20 px-2.5 py-1 font-mono text-[10.5px] text-white">
-                      {t}
+                  {p.tags.map((tag) => (
+                    <span key={tag} className="rounded-full bg-white/20 px-2.5 py-1 font-mono text-[10.5px] text-white">
+                      {tag}
                     </span>
                   ))}
                 </div>
@@ -106,7 +119,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* À PROPOS (preview) */}
+      {/* ABOUT (preview) */}
       <section className="grid grid-cols-1 items-center gap-12 px-6 py-16 sm:px-[52px] lg:grid-cols-[0.85fr_1.15fr]">
         <div
           className="flex h-[300px] items-center justify-center rounded-card shadow-[0_20px_46px_-26px_rgba(78,72,160,0.45)]"
@@ -114,35 +127,31 @@ export default function Home() {
             backgroundImage: "repeating-linear-gradient(135deg,#cdd1f0 0 14px,#dadcf4 14px 28px)",
           }}
         >
-          <span className="font-mono text-xs text-ink/40">photo / illustration</span>
+          <span className="font-mono text-xs text-ink/40">{tCommon("imagePlaceholder")}</span>
         </div>
         <div>
-          <SectionHeading eyebrow="À PROPOS" title="Les deux bouts de la chaîne" />
-          <p className="mt-5 text-base leading-[1.75] text-body">
-            {
-              "Développeur full-stack et designer, j'aime comprendre un besoin, dessiner l'interface, puis la construire. Sept expériences en startup, ERP et consulting m'ont appris à livrer vite et proprement, en équipe agile."
-            }
-          </p>
+          <SectionHeading eyebrow={t("about.eyebrow")} title={t("about.title")} />
+          <p className="mt-5 text-base leading-[1.75] text-body">{t("about.body")}</p>
           <div className="mt-6">
-            <ArrowLink href="/a-propos">En savoir plus</ArrowLink>
+            <ArrowLink href="/about">{tCommon("learnMore")}</ArrowLink>
           </div>
         </div>
       </section>
 
-      {/* COMPÉTENCES */}
+      {/* SKILLS */}
       <section className="px-6 py-16 sm:px-[52px]">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading eyebrow="STACK" title="Compétences & outils" />
-          <ArrowLink href="/competences">Toutes mes compétences</ArrowLink>
+          <SectionHeading eyebrow={t("skills.eyebrow")} title={t("skills.title")} />
+          <ArrowLink href="/skills">{t("skills.viewAll")}</ArrowLink>
         </div>
-        <TechGrid />
+        <TechGrid stack={stack} />
       </section>
 
-      {/* PARCOURS (preview) */}
+      {/* EXPERIENCE (preview) */}
       <section className="px-6 py-16 sm:px-[52px]">
         <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading eyebrow="EXPÉRIENCE" title="Parcours récent" />
-          <ArrowLink href="/parcours">Tout le parcours</ArrowLink>
+          <SectionHeading eyebrow={t("experience.eyebrow")} title={t("experience.title")} />
+          <ArrowLink href="/career">{t("experience.viewAll")}</ArrowLink>
         </div>
         <div className="pl-1">
           {experiences.slice(0, 2).map((exp, i, arr) => (
@@ -154,20 +163,18 @@ export default function Home() {
       {/* CONTACT (CTA) */}
       <section className="px-6 py-16 sm:px-[52px]">
         <div className="rounded-card bg-brand-soft px-8 py-14 text-center sm:px-12">
-          <p className="font-mono text-[13px] tracking-[2px] text-brand">CONTACT</p>
-          <h2 className="mt-3.5 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">Travaillons ensemble.</h2>
-          <p className="mx-auto mt-3 max-w-[440px] text-base leading-relaxed text-body">
-            Disponible pour un poste à partir de 2026. Écris-moi pour échanger sur un projet ou une opportunité.
-          </p>
+          <p className="font-mono text-[13px] tracking-[2px] text-brand">{t("contact.eyebrow")}</p>
+          <h2 className="mt-3.5 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">{t("contact.title")}</h2>
+          <p className="mx-auto mt-3 max-w-[440px] text-base leading-relaxed text-body">{t("contact.body")}</p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button asChild size="lg">
               <Link href="/contact">
-                Me contacter
+                {t("contact.ctaContact")}
                 <ArrowRight />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href="mailto:mathyspaul14@gmail.com">Envoyer un email</a>
+              <a href="mailto:mathyspaul14@gmail.com">{t("contact.ctaEmail")}</a>
             </Button>
           </div>
         </div>

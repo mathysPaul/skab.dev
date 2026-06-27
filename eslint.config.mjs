@@ -6,7 +6,9 @@ import unusedImports from "eslint-plugin-unused-imports";
 // Flat config (Next.js 16: `next lint` removed, eslint-config-next ships native
 // flat configs). The ignores block replaces what `next lint` handled implicitly.
 const eslintConfig = [
-  { ignores: [".next/**", "out/**", "build/**", "next-env.d.ts"] },
+  // Source-only lint. `.claude/**` (agent worktrees) and `.docs/**` (design
+  // notes, salvaged references) are gitignored, non-source artifacts.
+  { ignores: [".next/**", "out/**", "build/**", "next-env.d.ts", ".claude/**", ".docs/**"] },
   ...coreWebVitals,
   ...typescript,
   {

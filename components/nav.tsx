@@ -1,20 +1,21 @@
 "use client";
 
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import * as React from "react";
 
+import { LocaleSwitcher } from "@/components/locale-switcher";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Link, usePathname } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "/projets", label: "Projets" },
-  { href: "/parcours", label: "Parcours" },
-  { href: "/a-propos", label: "À propos" },
-  { href: "/contact", label: "Contact" },
-];
+  { href: "/projects", key: "projects" },
+  { href: "/career", key: "career" },
+  { href: "/about", key: "about" },
+  { href: "/contact", key: "contact" },
+] as const;
 
 function Logo() {
   return (
@@ -26,6 +27,7 @@ function Logo() {
 }
 
 function Nav() {
+  const t = useTranslations("nav");
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
 
@@ -55,19 +57,20 @@ function Nav() {
               isActive(link.href) ? "font-semibold text-brand" : "text-body",
             )}
           >
-            {link.label}
+            {t(link.key)}
           </Link>
         ))}
       </div>
 
       {/* Desktop right actions */}
       <div className="hidden items-center gap-4 lg:flex">
+        <LocaleSwitcher />
         <Badge variant="outline" dot="rgb(var(--success))" className="text-body">
-          Disponible
+          {t("available")}
         </Badge>
         <Button asChild size="sm">
           <Link href="/contact">
-            CV
+            {t("cv")}
             <ArrowUpRight />
           </Link>
         </Button>
@@ -77,7 +80,7 @@ function Nav() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+        aria-label={open ? t("closeMenu") : t("openMenu")}
         aria-expanded={open}
         className="flex size-10 items-center justify-center rounded-lg text-ink transition-colors hover:bg-brand-soft lg:hidden"
       >
@@ -89,7 +92,7 @@ function Nav() {
         <>
           <button
             type="button"
-            aria-label="Fermer le menu"
+            aria-label={t("closeMenu")}
             onClick={() => setOpen(false)}
             className="fixed inset-0 z-10 cursor-default bg-ink/20 backdrop-blur-sm lg:hidden"
           />
@@ -104,16 +107,14 @@ function Nav() {
                     isActive(link.href) ? "text-brand" : "text-ink",
                   )}
                 >
-                  {link.label}
+                  {t(link.key)}
                 </Link>
               ))}
               <div className="mt-2 flex items-center justify-between border-t border-line px-3 pt-4">
-                <Badge variant="outline" dot="rgb(var(--success))" className="text-body">
-                  Disponible
-                </Badge>
+                <LocaleSwitcher />
                 <Button asChild size="sm">
                   <Link href="/contact">
-                    CV
+                    {t("cv")}
                     <ArrowUpRight />
                   </Link>
                 </Button>

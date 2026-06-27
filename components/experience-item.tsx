@@ -1,5 +1,5 @@
 import { Tag } from "@/components/ui/tag";
-import { type Experience } from "@/lib/data/experiences";
+import { type Experience } from "@/lib/data-access/types";
 
 /** One entry of the experience timeline (dot + role/company + meta + tags). */
 function ExperienceItem({ exp, last = false }: { exp: Experience; last?: boolean }) {

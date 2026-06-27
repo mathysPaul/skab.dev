@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "projects": "Projets",
+    "career": "Parcours",
+    "about": "À propos",
+    "contact": "Contact",
+    "available": "Disponible",
+    "cv": "CV",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "metadata": {
+    "title": "Mathys Paul — Designer UI/UX & développeur full-stack",
+    "description": "Portfolio de Mathys Paul, développeur full-stack et designer UI/UX. Sept expériences en startup, ERP et consulting."
+  },
+  "footer": {
+    "copyright": "© 2026 Mathys Paul"
+  },
+  "common": {
+    "contactMe": "Me contacter",
+    "learnMore": "En savoir plus",
+    "viewProject": "Voir le projet",
+    "imageComingSoon": "Visuel à venir",
+    "imagePlaceholder": "photo / illustration"
+  },
+  "localeSwitcher": {
+    "label": "Changer de langue",
+    "fr": "FR",
+    "en": "EN",
+    "frFull": "Français",
+    "enFull": "English"
+  },
+  "home": {
+    "eyebrow": "PORTFOLIO — 2026",
+    "tagline": "Designer UI/UX & développeur full-stack",
+    "ctaContact": "Contactez-moi",
+    "scrollToNext": "Aller à la section suivante",
+    "projects": {
+      "eyebrow": "TRAVAUX",
+      "title": "Projets en cours",
+      "viewAll": "Tous les projets"
+    },
+    "about": {
+      "eyebrow": "À PROPOS",
+      "title": "Les deux bouts de la chaîne",
+      "body": "Développeur full-stack et designer, j'aime comprendre un besoin, dessiner l'interface, puis la construire. Sept expériences en startup, ERP et consulting m'ont appris à livrer vite et proprement, en équipe agile."
+    },
+    "skills": {
+      "eyebrow": "STACK",
+      "title": "Compétences & outils",
+      "viewAll": "Toutes mes compétences"
+    },
+    "experience": {
+      "eyebrow": "EXPÉRIENCE",
+      "title": "Parcours récent",
+      "viewAll": "Tout le parcours"
+    },
+    "contact": {
+      "eyebrow": "CONTACT",
+      "title": "Travaillons ensemble.",
+      "body": "Disponible pour un poste à partir de 2026. Écris-moi pour échanger sur un projet ou une opportunité.",
+      "ctaContact": "Me contacter",
+      "ctaEmail": "Envoyer un email"
+    }
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "title": "Les deux bouts de la chaîne",
+    "likesTitle": "CE QUE J'AIME FAIRE",
+    "ctaContact": "Me contacter"
+  },
+  "projects": {
+    "eyebrow": "Travaux",
+    "title": "Projets en cours",
+    "intro": "La structure est prête à recevoir mes projets réels : visuels, titres et descriptions sont à compléter.",
+    "viewProject": "Voir le projet"
+  },
+  "career": {
+    "eyebrow": "Expérience",
+    "title": "Parcours",
+    "intro": "Sept expériences en startup, ERP et consulting — du plus récent au plus ancien."
+  },
+  "skills": {
+    "eyebrow": "STACK",
+    "title": "Compétences & outils",
+    "intro": "Langages, frameworks et outils que je maîtrise.",
+    "introHighlight": "Survole un logo",
+    "introSuffix": "pour voir le détail.",
+    "methodsTitle": "MÉTHODES",
+    "methods": "Agile — Scrum & Kanban · Tests & intégration continue · Documentation technique"
+  },
+  "contact": {
+    "eyebrow": "CONTACT",
+    "title": "Travaillons ensemble.",
+    "intro": "Disponible pour un poste à partir de maintenant. Envoyez-moi un e-mail pour discuter d'un projet ou d'une opportunité.",
+    "availability": "Disponible — 2026"
+  }
+}
